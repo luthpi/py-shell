@@ -14,7 +14,7 @@ pip install -r requirements.txt
 run the app
 
 ```
-python app.py
+python main.py
 ```
 
 now you have entered the Py Shell, run `help` to see all of the commands.

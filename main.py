@@ -15,39 +15,41 @@ info = """
    License : MIT License
 """
 
+
 class CMD:
-	def clear():
-		if name == "nt":
-			system("cls")
-		else:
-			system("clear")
-	
-	def ls():
-		if name == "nt":
-			system("dir")
-		else:
-			system("ls")
-			
-	def cd(dir):
-		system(f"cd {dir}")
-		
-	def fetch(url):
-		try:
-		    res = req.get(url)
-		    res = res.json()
-		    print(res)
-		except:
-		        print(
+    def clear():
+        if name == "nt":
+            system("cls")
+        else:
+            system("clear")
+
+    def ls():
+        if name == "nt":
+            system("dir")
+        else:
+            system("ls")
+
+    def cd(dir):
+        system(f"cd {dir}")
+
+    def fetch(url):
+        try:
+            res = req.get(url)
+            res = res.json()
+            print(res)
+        except:
+            print(
                 f"{yellow}Error while doing http request. Please check your internet connection or the url you typed. The url might be invalid or the referenced url is not available or it does not provide any response{white}"
             )
-            
-	def sysinfo():
-	   print("Operating System: ", platform.system())
-	   print("Platform: ", platform.platform())
-	   print("Machine: ", platform.machine())
-	   print("Node Name: ", platform.node())
-	   print("Python: ", platform.python_version())
-			
+
+    def sysinfo():
+        print("Operating System: ", platform.system())
+        print("Platform: ", platform.platform())
+        print("Machine: ", platform.machine())
+        print("Node Name: ", platform.node())
+        print("Python: ", platform.python_version())
+
+
 cmd = CMD
 
 cyan = Fore.CYAN
@@ -66,7 +68,7 @@ available = [
     {"name": "ascii", "desc": "transform normal text to ascii"},
     {"name": "sysinfo", "desc": "print out user's device information"},
     {"name": "api", "desc": "simply get the json response from an api"},
-    {"name": "cd", "desc": "change directory"}
+    {"name": "cd", "desc": "change directory"},
 ]
 
 while True:
@@ -77,9 +79,9 @@ while True:
             print("Available commands: ")
             for item in available:
                 print(f"{white}{item['name']}{reset} -> {item['desc']}")
-            print("\nType \"help -i\" to see the information of this app")
+            print('\nType "help -i" to see the information of this app')
         elif len(inp) == 2 and inp[1] == "-i":
-        	print(info)
+            print(info)
     elif inp[0] == "clear":
         cmd.clear()
     elif inp[0] == "echo":
@@ -105,9 +107,11 @@ while True:
         else:
             print(f"{yellow}Please input the url.{reset} e.g : api https://example.com")
     elif inp[0] == "cd":
-    	if len(inp) == 2:
-    		cmd.cd(inp[1])
-    	else:
-    		print(f"{yellow}Invalid. {white}Please input the directory you want to go to.")
+        if len(inp) == 2:
+            cmd.cd(inp[1])
+        else:
+            print(
+                f"{yellow}Invalid. {white}Please input the directory you want to go to."
+            )
     else:
         print(f'{yellow}Command not found.{reset} Run "help" to see listed commands')
